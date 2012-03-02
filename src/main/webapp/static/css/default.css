@@ -1,0 +1,98 @@
+body {
+    font:.8em Helvetica, Verdana;
+}
+
+#container.signup {
+    width:100%;
+    height:100%;
+    min-width:980px;
+    min-height:590px;
+    position:absolute;
+    background:#cec3c9 url('../images/bg.jpg') repeat-x 0 50%;
+}
+#container.signup #content {
+    width:950px;
+    margin:0 auto;
+    padding:30px 15px;
+    background:#fff;
+    min-height:300px;
+}
+#container.signup #logo_container {
+    height:100%;
+    width:100%;
+    /*background:transparent url('../images/globe.png') no-repeat 120px 50%;*/
+}
+#container.signup #signup_container {
+    width:700px;
+    margin:130px auto 0 auto;
+}
+#container.signup #signup_container h2.success {
+    padding:25px 30px;
+    border:3px solid #00853e;
+    background-color:#cff4cf;
+    font-size:2.7em;
+    color:#404040;
+}
+#container.signup #signup_container #signup_form_container {
+    width:665px;
+    margin:0 auto;
+    padding-top:50px;
+}
+#container.signup #signup_container fieldset {
+    position:relative;
+}
+#container.signup #signup_container fieldset label.placeholder {
+    position:relative;
+}
+#container.signup #signup_container fieldset label.placeholder span {
+    position:absolute;
+    color:#a0a0a0;
+    top:-30px;
+    left:7px;
+    line-height:60px;
+    /*width:220px;*/
+    font-size:3em;
+    white-space:nowrap;
+}
+#container.signup #signup_container fieldset legend {
+    display:none;
+}
+#container.signup #signup_container h1.logo {
+    margin:0 0 25px 0;
+    font:2em bold;
+}
+#container.signup #signup_container h2 {
+    margin:0 0 5px 0; 
+}
+#container.signup #signup_container div.field {
+    float:left;
+}
+#container.signup #signup_container div.field input {
+    height:50px;
+    line-height:60px;
+    width:240px;
+    padding:15px 3px 2px 3px;
+    font-size:3em;
+}
+#container.signup #signup_container div.field.zip-code {
+    margin-left:35px;
+}
+#container.signup #signup_container div.field.zip-code input {
+    width:160px;
+}
+
+#container.signup #signup_container div.submit-button {
+    width:175px;
+    right:0;
+    top:2px;
+    position:absolute;
+}
+
+#footer {
+    margin-top:25px;
+}
+
+
+.err {
+    color:red;
+}

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:security="http://www.springframework.org/schema/security"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+           http://www.springframework.org/schema/context
+           http://www.springframework.org/schema/context/spring-context-3.0.xsd
+           http://www.springframework.org/schema/security
+           http://www.springframework.org/schema/security/spring-security-3.0.xsd">
+
+    <context:component-scan base-package="org.rhok.security"/>
+
+    <security:http auto-config='true'>
+
+        <!-- static files -->
+        <security:intercept-url pattern="/images/**" filters="none"/>
+        <security:intercept-url pattern="/js/**" filters="none"/>
+        <security:intercept-url pattern="/css/**" filters="none"/>
+
+        <!-- open resources -->
+        <security:intercept-url pattern="/login.html*" filters="none"/>
+
+        <!-- protected resources -->
+        <security:intercept-url pattern="/admin/**/*.html*" access="ROLE_ADMIN"/>
+        <security:intercept-url pattern="/**/*.html*" access="ROLE_USER"/>
+
+        <!-- login / logout -->
+        <security:form-login login-page="/login.html" default-target-url="/index.html"
+                             authentication-failure-url="/login.html?err=1"/>
+        <security:logout logout-success-url="/login.html"/>
+
+    </security:http>
+
+    <security:authentication-manager>
+        <security:authentication-provider user-service-ref="applicationUserDetailsService">
+            <security:password-encoder ref="passwordEncoder">
+                <security:salt-source system-wide="5vm5740y0dd8"/>
+            </security:password-encoder>
+        </security:authentication-provider>
+    </security:authentication-manager>
+
+    <bean id="passwordEncoder" class="org.springframework.security.authentication.encoding.ShaPasswordEncoder">
+        <constructor-arg value="256"/>
+    </bean>
+
+    <bean id="saltSource" class="org.springframework.security.authentication.dao.SystemWideSaltSource">
+        <property name="systemWideSalt" value="5vm5740y0dd8"/>
+    </bean>
+
+</beans>
